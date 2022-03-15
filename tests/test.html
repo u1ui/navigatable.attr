@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Attribute u1-href tests</title>
+
+        <link rel=stylesheet href="https://cdn.jsdelivr.net/gh/u1ui/base.css/full.css">
+        <link rel=stylesheet href="https://cdn.jsdelivr.net/gh/u1ui/classless.css/variables.min.css">
+        <link rel=stylesheet href="https://cdn.jsdelivr.net/gh/u1ui/classless.css/classless.min.css">
+        <link rel=stylesheet href="https://cdn.jsdelivr.net/gh/u1ui/classless.css/more.min.css">
+        <link rel=stylesheet href="https://cdn.jsdelivr.net/gh/u1ui/classless.css/simple.min.css">
+
+        <script src="../navigatable.js" type=module></script>
+
+    <body>
+
+<section>
+
+    <a href="#dialog1">navigate to #dialog1</a>
+
+    <dialog id="dialog1" u1-navigatable>
+        dialog 1 is open
+        <br>
+        <a href="#dialog2">navigate to #dialog2</a>
+    </dialog>
+
+    <dialog id="dialog2" u1-navigatable>
+        dialog 2 is open
+    </dialog>
+
+</section>
