@@ -13,3 +13,6 @@ make elements naivgatable (&lt;dialog> for now)
     <button>OK</button>
 </dialog>
 ```
+## Demo
+https://raw.githack.com/u1ui/navigatable.attr/main/tests/test.html  
+
