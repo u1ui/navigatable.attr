@@ -25,7 +25,7 @@ function checkTarget(e){
 }
 addEventListener('hashchange',checkTarget);
 addEventListener('DOMContentLoaded',checkTarget);
-checkTarget();
+setTimeout(checkTarget,0);
 
 document.addEventListener('u1-target', e => {
 	console.log(e)
