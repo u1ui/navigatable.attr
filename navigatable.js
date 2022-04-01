@@ -24,7 +24,7 @@ function checkTarget(e){
 addEventListener('hashchange',checkTarget);
 addEventListener('DOMContentLoaded',checkTarget);
 //checkTarget();
-setTimeout(checkTarget);
+requestAnimationFrame(checkTarget);
 
 /* dialog element */
 document.addEventListener('u1-target', e => {
