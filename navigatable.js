@@ -22,9 +22,7 @@ function checkTarget(e){
 	oldTarget = target;
 }
 addEventListener('hashchange',checkTarget);
-//addEventListener('DOMContentLoaded',checkTarget);
-//checkTarget();
-requestAnimationFrame(checkTarget);
+addEventListener('DOMContentLoaded',e=>setTimeout(checkTarget));
 
 /* dialog element */
 document.addEventListener('u1-target', e => {
@@ -50,6 +48,7 @@ addEventListener('close',e=>{
 	history.back();
 	e.preventDefault();
 },true);
+
 
 // beta
 // u1 unified api
