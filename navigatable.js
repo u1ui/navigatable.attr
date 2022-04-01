@@ -3,6 +3,7 @@
 /* u1-target-event */
 let oldTarget = null;
 function checkTarget(e){
+	console.log('check')
 	const target = (location.hash && document.querySelector(location.hash)) || document;
 	if (target === oldTarget) return;
 
