@@ -52,6 +52,7 @@ addEventListener('close',e=>{
 	e.preventDefault();
 },true);
 
+// beta
 // u1 unified api
 addEventListener('u1-activate', e => {
     if (!e.target.hasAttribute('u1-navigatable')) return;
