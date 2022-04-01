@@ -22,7 +22,7 @@ function checkTarget(e){
 	oldTarget = target;
 }
 addEventListener('hashchange',checkTarget);
-addEventListener('DOMContentLoaded',checkTarget);
+//addEventListener('DOMContentLoaded',checkTarget);
 //checkTarget();
 requestAnimationFrame(checkTarget);
 
