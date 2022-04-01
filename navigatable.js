@@ -24,11 +24,22 @@ addEventListener('hashchange',checkTarget);
 addEventListener('DOMContentLoaded',checkHashTarget);
 checkTarget();
 
-document.addEventListener('u1-target'e=>{
+document.addEventListener('u1-target' e => {
+	const oldTarget = e.detail.oldTarget;
+	const target = e.target;
+
+	if (oldTarget && oldTarget.matches('dialog[u1-navigatable]')) {
+		if (!target.contains(oldTarget)) oldTarget.close();
+	}
+    if (target.matches('dialog[u1-navigatable]')) {
+        !target.open && target.showModal();
+    }
 
 
 });
 
+
+/*
 function checkHashTarget(){
     if (!location.hash) return;
 	const target = document.querySelector(location.hash);
@@ -37,12 +48,12 @@ function checkHashTarget(){
         !target.open && target.showModal();
     }
 
-	/* beta */
+	/ * beta * /
 	const event = new CustomEvent('u1-navigatable-target', {
 		bubbles:true,
 	});
 	target.dispatchEvent(event);
-	/* */
+	/* * /
 
 }
 setTimeout(checkHashTarget);
@@ -62,6 +73,7 @@ addEventListener('hashchange',e=>{
 	}
 	checkHashTarget();
 });
+*/
 
 // prevent close dialog, then navigate back to close
 addEventListener('close',e=>{
@@ -74,6 +86,7 @@ addEventListener('close',e=>{
 },true);
 
 // u1 unified api
+/*
 addEventListener('u1-activate', e => {
 //    if (openedByHistory) return; // needed?
     if (!e.target.hasAttribute('u1-navigatable')) return;
@@ -84,3 +97,4 @@ addEventListener('u1-activate', e => {
 	//e.preventDefault(); // needed?
 	location.href = '#' + e.target.id;
 });
+*/
