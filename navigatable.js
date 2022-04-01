@@ -17,6 +17,7 @@ function checkTarget(e){
 }
 
 addEventListener('hashchange',checkTarget);
+addEventListener('DOMContentLoaded',checkHashTarget);
 checkTarget();
 
 
