@@ -28,57 +28,24 @@ addEventListener('DOMContentLoaded',checkTarget);
 setTimeout(checkTarget,0);
 
 document.addEventListener('u1-target', e => {
-	console.log(e)
 	const oldTarget = e.detail.oldTarget;
 	const target = e.target;
 
 	if (oldTarget && oldTarget.matches && oldTarget.matches('dialog[u1-navigatable]')) {
 		if (!target.contains(oldTarget)) oldTarget.close();
 	}
-    if (target.matches('dialog[u1-navigatable]')) {
+    if (target && target.matches && target.matches('dialog[u1-navigatable]')) {
         !target.open && target.showModal();
     }
 });
 
-
-/*
-function checkHashTarget(){
-    if (!location.hash) return;
-	const target = document.querySelector(location.hash);
-	if (!target) return;
-    if (target.matches('dialog[u1-navigatable]')) {
-        !target.open && target.showModal();
-    }
-
-	/ * beta * /
-	const event = new CustomEvent('u1-navigatable-target', {
-		bubbles:true,
-	});
-	target.dispatchEvent(event);
-	/* * /
-
-}
-setTimeout(checkHashTarget);
-document.addEventListener('DOMContentLoaded',checkHashTarget);
-
-let closedByHistory = false;
-addEventListener('hashchange',e=>{
-	// close modal
-	if (!closedByHistory) {
-		const oldHash = new URL(e.oldURL).hash;
-        if (oldHash) {
-            const target = document.querySelector(oldHash);
-            if (target && target.matches('dialog[u1-navigatable]')) {
-                target.close();
-            }
-        }
-	}
-	checkHashTarget();
-});
-*/
 
 // prevent close dialog, then navigate back to close
 addEventListener('close',e=>{
+	const target = e.target;
+    if (target && target.matches && target.matches('dialog[u1-navigatable]')) {
+        !target.open && target.showModal();
+    }
 	//closedByHistory = true;
 	if (e.target.id && e.target.id === location.hash.substr(1)) {
 		history.back();
