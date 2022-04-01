@@ -44,7 +44,7 @@ addEventListener('close',e=>{
 	e.preventDefault();
 },true);
 
-// unified api
+// u1 unified api
 addEventListener('u1-activate', e => {
 //    if (openedByHistory) return; // needed?
     if (!e.target.hasAttribute('u1-navigatable')) return;
