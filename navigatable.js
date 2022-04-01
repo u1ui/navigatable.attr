@@ -15,7 +15,7 @@ function checkTarget(e){
 	// }
 	const event = new CustomEvent('u1-target', {
 		bubbles:true,
-		detail:{ oldTarget }
+		detail: {oldTarget}
 	});
 	target.dispatchEvent(event);
 	oldTarget = target;
