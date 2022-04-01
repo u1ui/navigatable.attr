@@ -3,8 +3,11 @@
 /* u1-target-event */
 let oldTarget = null;
 function checkTarget(e){
-	const target = document.querySelector(location.hash) || document;
+	const target = (location.hash && document.querySelector(location.hash)) || document;
 	if (target === oldTarget) return;
+
+	console.log(target)
+	console.log(oldTarget)
 
 	// let oldTarget = document;
 	// if (e) {
@@ -21,16 +24,18 @@ function checkTarget(e){
 	oldTarget = target;
 }
 addEventListener('hashchange',checkTarget);
-addEventListener('DOMContentLoaded',checkHashTarget);
+addEventListener('DOMContentLoaded',checkTarget);
 checkTarget();
 
-document.addEventListener('u1-target' e => {
+document.addEventListener('u1-target', e => {
+	console.log(e)
 	const oldTarget = e.detail.oldTarget;
 	const target = e.target;
 
-	if (oldTarget && oldTarget.matches('dialog[u1-navigatable]')) {
+	if (oldTarget && oldTarget.matches && oldTarget.matches('dialog[u1-navigatable]')) {
 		if (!target.contains(oldTarget)) oldTarget.close();
 	}
+	console.log(target)
     if (target.matches('dialog[u1-navigatable]')) {
         !target.open && target.showModal();
     }
