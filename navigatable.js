@@ -22,7 +22,7 @@ function checkTarget(e){
 }
 addEventListener('hashchange',checkTarget);
 addEventListener('DOMContentLoaded',checkTarget);
-setTimeout(checkTarget,0);
+checkTarget();
 
 /* dialog element */
 document.addEventListener('u1-target', e => {
