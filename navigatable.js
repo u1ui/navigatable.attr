@@ -5,14 +5,6 @@ let oldTarget = null;
 function checkTarget(e){
 	const target = (location.hash && document.querySelector(location.hash)) || document;
 	if (target === oldTarget) return;
-
-	// let oldTarget = document;
-	// if (e) {
-	// 	const oldHash = new URL(e.oldURL).hash;
-    //     if (oldHash) {
-    //         oldTarget = document.querySelector(oldHash);
-    //     }
-	// }
 	const event = new CustomEvent('u1-target', {
 		bubbles:true,
 		detail: {oldTarget}
