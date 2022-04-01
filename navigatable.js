@@ -6,7 +6,6 @@ function checkTarget(e){
 	const target = (location.hash && document.querySelector(location.hash)) || document;
 	if (target === oldTarget) return;
 
-	console.log('trigger')
 	// let oldTarget = document;
 	// if (e) {
 	// 	const oldHash = new URL(e.oldURL).hash;
