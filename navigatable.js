@@ -43,14 +43,11 @@ document.addEventListener('u1-target', e => {
 // prevent close dialog, then navigate back to close
 addEventListener('close',e=>{
 	const target = e.target;
-    if (target && target.matches && target.matches('dialog[u1-navigatable]')) {
-        !target.open && target.showModal();
-    }
-	//closedByHistory = true;
-	if (e.target.id && e.target.id === location.hash.substr(1)) {
-		history.back();
-	}
-	//closedByHistory = false;
+	if (!target.id) return;
+	if (e.target.id !== location.hash.substr(1)) return;
+	if (!target.matches('dialog[u1-navigatable]')) return;
+
+	history.back();
 	e.preventDefault();
 },true);
 
