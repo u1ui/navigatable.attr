@@ -79,11 +79,11 @@ addEventListener('hashchange',e=>{
 
 // prevent close dialog, then navigate back to close
 addEventListener('close',e=>{
-	closedByHistory = true;
+	//closedByHistory = true;
 	if (e.target.id && e.target.id === location.hash.substr(1)) {
 		history.back();
 	}
-	closedByHistory = false;
+	//closedByHistory = false;
 	e.preventDefault();
 },true);
 
