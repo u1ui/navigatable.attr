@@ -15,6 +15,7 @@ function checkTarget(e){
 addEventListener('hashchange',checkTarget);
 addEventListener('DOMContentLoaded',e=>setTimeout(checkTarget));
 
+
 /* dialog element */
 document.addEventListener('u1-target', e => {
 	const oldTarget = e.detail.oldTarget;
@@ -27,9 +28,6 @@ document.addEventListener('u1-target', e => {
         !target.open && target.showModal();
     }
 });
-
-
-// prevent close dialog, then navigate back to close
 addEventListener('close',e=>{
 	const target = e.target;
 	if (!target.id) return;
@@ -39,6 +37,7 @@ addEventListener('close',e=>{
 	history.back();
 	e.preventDefault();
 },true);
+
 
 
 // beta
