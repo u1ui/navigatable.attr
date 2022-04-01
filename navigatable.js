@@ -27,6 +27,7 @@ addEventListener('hashchange',checkTarget);
 addEventListener('DOMContentLoaded',checkTarget);
 setTimeout(checkTarget,0);
 
+/* dialog element */
 document.addEventListener('u1-target', e => {
 	const oldTarget = e.detail.oldTarget;
 	const target = e.target;
@@ -52,9 +53,7 @@ addEventListener('close',e=>{
 },true);
 
 // u1 unified api
-/*
 addEventListener('u1-activate', e => {
-//    if (openedByHistory) return; // needed?
     if (!e.target.hasAttribute('u1-navigatable')) return;
 	if (!e.target.hasAttribute('id')) {
 		console.warn('element with a u1-navigatable attribute must have an id');
@@ -63,4 +62,3 @@ addEventListener('u1-activate', e => {
 	//e.preventDefault(); // needed?
 	location.href = '#' + e.target.id;
 });
-*/
