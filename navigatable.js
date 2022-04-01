@@ -1,5 +1,26 @@
 // todo security check, is querySelector harmfull for user-input?
 
+function checkTarget(e){
+	const target = document.querySelector(location.hash) || document;
+	let oldTarget = document;
+	if (e) {
+		const oldHash = new URL(e.oldURL).hash;
+        if (oldHash) {
+            oldTarget = document.querySelector(oldHash);
+        }
+	}
+	const event = new CustomEvent('u1-target', {
+		bubbles:true,
+		detail:{ oldTarget }
+	});
+	target.dispatchEvent(event);
+}
+
+addEventListener('hashchange',checkTarget);
+checkTarget();
+
+
+
 function checkHashTarget(){
     if (!location.hash) return;
 	const target = document.querySelector(location.hash);
