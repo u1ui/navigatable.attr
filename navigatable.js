@@ -3,10 +3,10 @@
 /* u1-target-event */
 let oldTarget = null;
 function checkTarget(e){
-	console.log('check')
 	const target = (location.hash && document.querySelector(location.hash)) || document;
 	if (target === oldTarget) return;
 
+	console.log('trigger')
 	// let oldTarget = document;
 	// if (e) {
 	// 	const oldHash = new URL(e.oldURL).hash;
@@ -23,7 +23,8 @@ function checkTarget(e){
 }
 addEventListener('hashchange',checkTarget);
 addEventListener('DOMContentLoaded',checkTarget);
-checkTarget();
+//checkTarget();
+setTimeout(checkTarget);
 
 /* dialog element */
 document.addEventListener('u1-target', e => {
