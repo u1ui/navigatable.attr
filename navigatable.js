@@ -8,12 +8,12 @@ function checkHashTarget(){
         !target.open && target.showModal();
     }
 
-	/*
+	/* beta */
 	const event = new CustomEvent('u1-navigatable-target', {
 		bubbles:true,
 	});
 	target.dispatchEvent(event);
-	*/
+	/* */
 
 }
 setTimeout(checkHashTarget);
