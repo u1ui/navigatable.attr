@@ -7,6 +7,14 @@ function checkHashTarget(){
     if (target.matches('dialog[u1-navigatable]')) {
         !target.open && target.showModal();
     }
+
+	/*
+	const event = new CustomEvent('u1-navigatable-target', {
+		bubbles:true,
+	});
+	target.dispatchEvent(event);
+	*/
+
 }
 setTimeout(checkHashTarget);
 document.addEventListener('DOMContentLoaded',checkHashTarget);
