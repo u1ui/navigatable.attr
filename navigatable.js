@@ -43,3 +43,15 @@ addEventListener('close',e=>{
 	closedByHistory = false;
 	e.preventDefault();
 },true);
+
+// unified api
+addEventListener('u1-activate', e => {
+//    if (openedByHistory) return; // needed?
+    if (!e.target.hasAttribute('u1-navigatable')) return;
+	if (!e.target.hasAttribute('id')) {
+		console.warn('element with a u1-navigatable attribute must have an id');
+		return;
+	}
+	//e.preventDefault(); // needed?
+	location.href = '#' + e.target.id;
+});
