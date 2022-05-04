@@ -5,11 +5,13 @@ let oldTarget = null;
 function checkTarget(e){
 	const target = (location.hash && document.querySelector(location.hash)) || document;
 	if (target === oldTarget) return;
-	const event = new CustomEvent('u1-target', {
-		bubbles:true,
-		detail: {oldTarget}
-	});
-	target.dispatchEvent(event);
+	if (target !== document) {
+		const event = new CustomEvent('u1-target', {
+			bubbles:true,
+			detail: {oldTarget}
+		});
+		target.dispatchEvent(event);
+	}
 	oldTarget = target;
 }
 addEventListener('hashchange',checkTarget);
@@ -42,7 +44,7 @@ addEventListener('close',e=>{
 /* details */
 document.addEventListener('u1-target', e => {
 	const target = e.target;
-	if (target.matches && target.matches('details[u1-navigatable]')) {
+	if (target.matches('details[u1-navigatable]')) {
 		e.target.open = true;
 	}
 });
