@@ -16,7 +16,7 @@ function checkTarget(e){
 addEventListener('hashchange',checkTarget);
 addEventListener('DOMContentLoaded',e=>setTimeout(checkTarget)); // bad, better to use a "TargetObserver"
 
-window.addEventListener('popstate', e => {
+addEventListener('popstate', e => {
 	console.log(e);
 	const url = new Url(location.href);
 });
@@ -63,7 +63,7 @@ addEventListener('toggle',e=>{
 
 		const url = new URL(window.location);
 		url.searchParams.set('u1-target', target.id);
-		history.pushState({}, '', url);
+		history.pushState({}, '', url+'');
 		console.log(url)
 
 
