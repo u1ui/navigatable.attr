@@ -76,8 +76,7 @@ addEventListener('u1-activate', e => {
 
 
 
-
-
+/*
 const voidSet = new Set();
 const observers = new Set();
 class TargetObserver {
@@ -125,6 +124,7 @@ function modifySearchParam(id, add){
 	checkTargets();
 }
 
-let testObs = new TargetObserver(e=>{
-	console.log(e)
-});
+// let testObs = new TargetObserver(e=>{
+// 	console.log(e)
+// });
+*/
