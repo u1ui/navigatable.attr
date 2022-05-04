@@ -35,8 +35,8 @@ let actives = new Set();
 
 const oldTargets = [];
 function checkTargets(){
-
 	const newest = new Set();
+
 	newest.add(location.hash.substr(1));
 
 	const url = new URL(window.location);
@@ -47,13 +47,10 @@ function checkTargets(){
 	const removed = new Set();
 	for (let item of actives) if (!newest.has(item))  removed.add(item);
 	for (let item of newest)  if (!actives.has(item)) added.add(item);
-
-	actives = newest;
-
 	observers.forEach(obs=>{
 		obs.fn({added, removed})
 	});
-
+	actives = newest;
 }
 
 addEventListener('hashchange',checkTarget);
