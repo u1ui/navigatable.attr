@@ -56,6 +56,7 @@ function checkTargets(){
 
 addEventListener('popstate', triggerLocationChange);
 function triggerLocationChange(){
+	checkTargets();
 	observers.forEach(obs=>{
 		obs.fn({added, removed})
 	});
