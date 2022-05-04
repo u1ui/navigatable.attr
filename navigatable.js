@@ -56,10 +56,11 @@ addEventListener('toggle',e=>{
 	if (target.open) {
 		location.hash = target.id;
 	} else {
-		console.log(location.hash)
-		location.hash = '';
-		//history.back();
-		//e.preventDefault();
+		if (e.target.id === location.hash.substr(1)) {
+			history.back();
+			e.preventDefault();
+			//location.hash = '';
+		}
 	}
 },true);
 
