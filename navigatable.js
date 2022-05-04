@@ -21,10 +21,10 @@ addEventListener('popstate', e => {
 	const url = new Url(location.href);
 });
 
-function toSearchParam(id, do){
+function modifySearchParam(id, add){
 	const url = new URL(window.location);
 	const targets = url.searchParams.get('u1-target')?.split(' ') ?? [];
-	if (do) targets.push(id);
+	if (add) targets.push(id);
 	else targets.splice(targets.indexOf(id),1);
 	url.searchParams.set('u1-target', targets.join(' '));
 	history.pushState({}, '', url+'');
@@ -68,22 +68,13 @@ addEventListener('toggle',e=>{
 	if (!target.matches('details[u1-navigatable]')) return;
 	if (target.open) {
 
-		const url = new URL(window.location);
-		const targets = url.searchParams.get('u1-target')?.split(' ') ?? [];
-		targets.push(target.id);
-		url.searchParams.set('u1-target', targets.join(' '));
-		history.pushState({}, '', url+'');
+		modifySearchParam(target.id, true);
 
 
 //		location.hash = target.id;
 	} else {
 
-		const url = new URL(window.location);
-		const targets = (url.searchParams.get('u1-target')??'').split(' ') ?? [];
-		const index = targets.indexOf(target.id);
-		if (index > -1) targets.splice(index, 1);
-		url.searchParams.set('u1-target', targets.join(' '));
-		history.pushState({}, '', url+'');
+		modifySearchParam(target.id, false);
 
 
 		/*
