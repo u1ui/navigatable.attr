@@ -17,7 +17,21 @@ addEventListener('hashchange',checkTarget);
 addEventListener('DOMContentLoaded',e=>setTimeout(checkTarget)); // bad, better to use a "TargetObserver"
 
 
+
+
+const observers = [];
+class TargetObserver {
+	constructor(fn) {
+		this.fn = fn;
+		observers.push(this);
+	}
+}
 addEventListener('popstate', triggerLocationChange);
+function triggerLocationChange(){
+	observers.forEach(obs=>{
+		obs.fn.call(obs.context, obs.target);
+	})
+}
 function modifySearchParam(id, add){
 	const url = new URL(window.location);
 	const targets = url.searchParams.get('u1-target')?.split(' ') ?? [];
