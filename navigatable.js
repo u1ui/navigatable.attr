@@ -24,6 +24,7 @@ class TargetObserver {
 	constructor(fn) {
 		this.fn = fn;
 		observers.add(this);
+
 	}
 	disconnect() {
 		observers.delete(this);
@@ -32,7 +33,7 @@ class TargetObserver {
 addEventListener('popstate', triggerLocationChange);
 function triggerLocationChange(){
 	observers.forEach(obs=>{
-		obs.fn.call(obs.context, obs.target);
+		obs.trigger();
 	})
 }
 function modifySearchParam(id, add){
