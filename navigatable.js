@@ -44,6 +44,8 @@ function checkTargets(){
 	const search = url.searchParams.get('u1-target')?.split(' ');
 	if (search) newest.add(search);
 
+	added = new Set();
+	removed = new Set();
 	for (let active of actives) {
 		if (!newest.has(active)) removed.add(active);
 	}
@@ -51,6 +53,7 @@ function checkTargets(){
 		if (!actives.has(neu)) added.add(item);
 	}
 
+	actives = newest;
 
 }
 
