@@ -19,11 +19,14 @@ addEventListener('DOMContentLoaded',e=>setTimeout(checkTarget)); // bad, better 
 
 
 
-const observers = [];
+const observers = new Set();
 class TargetObserver {
 	constructor(fn) {
 		this.fn = fn;
-		observers.push(this);
+		observers.add(this);
+	}
+	disconnect() {
+		observers.delete(this);
 	}
 }
 addEventListener('popstate', triggerLocationChange);
