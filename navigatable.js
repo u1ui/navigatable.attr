@@ -20,7 +20,6 @@ addEventListener('DOMContentLoaded',e=>setTimeout(checkTarget));
 /* dialog element */
 document.addEventListener('u1-target', e => {
 	const {oldTarget,target} = e.detail;
-
 	if (oldTarget && oldTarget.matches('dialog[u1-navigatable]')) {
 		if (target && !target.contains(oldTarget)) oldTarget.close();
 	}
@@ -42,7 +41,6 @@ addEventListener('close',e=>{
 /* details */
 document.addEventListener('u1-target', e => {
 	const {oldTarget,target} = e.detail;
-
 	if (oldTarget && oldTarget.matches('details[u1-navigatable]')) {
 		oldTarget.open = false;
 	}
