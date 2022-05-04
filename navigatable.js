@@ -19,6 +19,7 @@ addEventListener('DOMContentLoaded',e=>setTimeout(checkTarget)); // bad, better 
 
 
 
+
 /* dialog element */
 document.addEventListener('u1-target', e => {
 	const {oldTarget,target} = e.detail;
