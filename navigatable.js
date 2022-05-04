@@ -47,14 +47,14 @@ document.addEventListener('u1-target', e => {
 	}
 });
 addEventListener('toggle',e=>{
-	console.log(e)
 	const target = e.target;
 	if (!target.id) return;
 	if (e.target.id !== location.hash.substr(1)) return;
 	if (!target.matches('details[u1-navigatable]')) return;
 
-	history.back();
-	e.preventDefault();
+	console.log(target)
+	//history.back();
+	//e.preventDefault();
 },true);
 
 
