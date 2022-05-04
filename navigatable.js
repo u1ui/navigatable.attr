@@ -62,7 +62,7 @@ addEventListener('toggle',e=>{
 	} else {
 		if (e.target.id === location.hash.substr(1)) {
 			history.back();
-			e.preventDefault();
+			//e.preventDefault();
 			//location.hash = '';
 		}
 	}
