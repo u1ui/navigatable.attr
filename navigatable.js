@@ -78,13 +78,13 @@ addEventListener('u1-activate', e => {
 
 
 
-
+const voidSet = new Set();
 const observers = new Set();
 class TargetObserver {
 	constructor(fn) {
 		this.fn = fn;
 		observers.add(this);
-		fn({added:actives, removed:[]});
+		fn({added:actives, removed:voidSet});
 	}
 	disconnect() {
 		observers.delete(this);
@@ -100,19 +100,14 @@ function checkTargets(){
 	newest.add(location.hash.substr(1));
 
 	const url = new URL(window.location);
-	const search = (url.searchParams.get('u1-target')||'').split(' ');
 	const param = url.searchParams.get('u1-target');
-	if (search) for (const item of search) newest.add(item);
-	////newest.add(search);
-
+	if (param) for (const item of param.split(' ')) newest.add(item);
 
 	const added = new Set();
 	const removed = new Set();
 	for (let item of actives) if (!newest.has(item))  removed.add(item);
 	for (let item of newest)  if (!actives.has(item)) added.add(item);
-	observers.forEach(obs=>{
-		obs.fn({added, removed})
-	});
+	observers.forEach(obs=>obs.fn({added, removed}));
 	actives = newest;
 }
 
@@ -133,3 +128,7 @@ function modifySearchParam(id, add){
 new TargetObserver(e=>{
 	console.log(e)
 })
+
+setTimeout(function(){
+	observer.disconnect();
+},1000);
