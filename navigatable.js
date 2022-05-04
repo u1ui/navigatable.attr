@@ -32,8 +32,6 @@ class TargetObserver {
 }
 
 let actives = new Set();
-let added = new Set();
-let removed = new Set();
 
 const oldTargets = [];
 function checkTargets(){
@@ -45,8 +43,8 @@ function checkTargets(){
 	const search = (url.searchParams.get('u1-target')||'').split(' ');
 	if (search) newest.add(search);
 
-	added = new Set();
-	removed = new Set();
+	const added = new Set();
+	const removed = new Set();
 	for (let item of actives) if (!newest.has(item))  removed.add(item);
 	for (let item of newest)  if (!actives.has(item)) added.add(item);
 
