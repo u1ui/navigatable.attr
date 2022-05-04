@@ -125,10 +125,6 @@ function modifySearchParam(id, add){
 	checkTargets();
 }
 
-new TargetObserver(e=>{
+let testObs = new TargetObserver(e=>{
 	console.log(e)
-})
-
-setTimeout(function(){
-	observer.disconnect();
-},1000);
+});
