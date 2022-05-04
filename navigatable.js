@@ -22,7 +22,7 @@ document.addEventListener('u1-target', e => {
 	const {oldTarget,target} = e.detail;
 
 	if (oldTarget && oldTarget.matches('dialog[u1-navigatable]')) {
-		if (!target.contains(oldTarget)) oldTarget.close();
+		if (target && !target.contains(oldTarget)) oldTarget.close();
 	}
     if (target && target.matches('dialog[u1-navigatable]')) {
         !target.open && target.showModal();
@@ -45,7 +45,6 @@ document.addEventListener('u1-target', e => {
 
 	console.log(target, oldTarget);
 	if (oldTarget && oldTarget.matches('details[u1-navigatable]')) {
-		/*if (!target.contains(oldTarget))*/
 		oldTarget.open = false;
 	}
 	if (target && target.matches('details[u1-navigatable]')) {
