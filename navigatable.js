@@ -43,7 +43,6 @@ addEventListener('close',e=>{
 document.addEventListener('u1-target', e => {
 	const {oldTarget,target} = e.detail;
 
-	console.log(target, oldTarget);
 	if (oldTarget && oldTarget.matches('details[u1-navigatable]')) {
 		oldTarget.open = false;
 	}
@@ -54,14 +53,13 @@ document.addEventListener('u1-target', e => {
 addEventListener('toggle',e=>{
 	const target = e.target;
 	if (!target.id) return;
-	//if (e.target.id !== location.hash.substr(1)) return;
 	if (!target.matches('details[u1-navigatable]')) return;
 
 	if (target.open) {
 		location.hash = target.id;
 	} else {
-		//history.back();
-		//e.preventDefault();
+		history.back();
+		e.preventDefault();
 	}
 },true);
 
