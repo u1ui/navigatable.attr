@@ -52,10 +52,6 @@ addEventListener('toggle',e=>{
 	if (e.target.id !== location.hash.substr(1)) return;
 	if (!target.matches('details[u1-navigatable]')) return;
 
-	if (target.open) {
-		target.open = false;
-	}
-	console.log(target)
 	//history.back();
 	//e.preventDefault();
 },true);
