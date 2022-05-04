@@ -79,7 +79,6 @@ addEventListener('u1-activate', e => {
 
 
 
-/*
 const observers = new Set();
 class TargetObserver {
 	constructor(fn) {
@@ -127,4 +126,7 @@ function modifySearchParam(id, add){
 	history.pushState({}, '', url+'');
 	checkTargets();
 }
-*/
+
+new TargetObserver(e=>{
+	console.log(e)
+})
