@@ -58,8 +58,9 @@ addEventListener('toggle',e=>{
 	if (target.open) {
 		location.hash = target.id;
 	} else {
-		history.back();
-		e.preventDefault();
+		location.hash = '';
+		//history.back();
+		//e.preventDefault();
 	}
 },true);
 
