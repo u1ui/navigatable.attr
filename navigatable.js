@@ -33,9 +33,14 @@ class TargetObserver {
 
 	}
 }
+const added = new Set();
+const removed = new Set();
+
 addEventListener('popstate', triggerLocationChange);
 function triggerLocationChange(){
 	observers.forEach(obs=>{
+
+		//const added =
 		obs.fn({added, removed})
 	})
 }
