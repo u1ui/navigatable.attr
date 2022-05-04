@@ -46,12 +46,8 @@ function checkTargets(){
 
 	added = new Set();
 	removed = new Set();
-	for (let active of actives) {
-		if (!newest.has(active)) removed.add(active);
-	}
-	for (let neu of newest) {
-		if (!actives.has(neu)) added.add(item);
-	}
+	for (let item of actives) if (!newest.has(item))  removed.add(item);
+	for (let item of newest)  if (!actives.has(item)) added.add(item);
 
 	actives = newest;
 
