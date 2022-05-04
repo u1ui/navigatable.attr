@@ -29,11 +29,14 @@ class TargetObserver {
 	disconnect() {
 		observers.delete(this);
 	}
+	trigger(){
+
+	}
 }
 addEventListener('popstate', triggerLocationChange);
 function triggerLocationChange(){
 	observers.forEach(obs=>{
-		obs.trigger();
+		obs.fn({added, removed})
 	})
 }
 function modifySearchParam(id, add){
