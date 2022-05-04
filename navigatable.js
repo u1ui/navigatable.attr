@@ -77,6 +77,9 @@ addEventListener('u1-activate', e => {
 
 
 /*
+
+// TargetObserver //
+
 const voidSet = new Set();
 const observers = new Set();
 class TargetObserver {
@@ -92,7 +95,6 @@ class TargetObserver {
 
 let actives = new Set();
 
-const oldTargets = [];
 function checkTargets(){
 	const newest = new Set();
 
@@ -109,10 +111,11 @@ function checkTargets(){
 	observers.forEach(obs=>obs.fn({added, removed}));
 	actives = newest;
 }
-
 addEventListener('hashchange',checkTarget);
 addEventListener('popstate', checkTargets);
 checkTargets();
+
+// ManipulateSearchParam //
 
 function modifySearchParam(id, add){
 	const url = new URL(window.location);
@@ -123,6 +126,8 @@ function modifySearchParam(id, add){
 	history.pushState({}, '', url+'');
 	checkTargets();
 }
+
+// Ussage //
 
 // let testObs = new TargetObserver(e=>{
 // 	console.log(e)
