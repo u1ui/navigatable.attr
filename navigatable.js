@@ -35,11 +35,13 @@ const removed = new Set();
 
 const oldTargets = [];
 function checkTargets(){
+
+	active.add(location.hash.substr(1));
+
 	const url = new URL(window.location);
 	const search = url.searchParams.get('u1-target')?.split(' ');
 	if (search) {
-		for (let id of search) {
-		}
+		active.add(search);
 	}
 
 
