@@ -63,8 +63,8 @@ addEventListener('toggle',e=>{
 
 		const url = new URL(window.location);
 		const targets = url.searchParams.get('u1-target').split(',');
-		console.log(targets)
-		url.searchParams.set('u1-target', target.id);
+		targets.push(target.id);
+		url.searchParams.set('u1-target', targets.join(','));
 		history.pushState({}, '', url+'');
 		console.log(url)
 
