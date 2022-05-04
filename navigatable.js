@@ -54,7 +54,6 @@ addEventListener('toggle',e=>{
 	const target = e.target;
 	if (!target.id) return;
 	if (!target.matches('details[u1-navigatable]')) return;
-
 	if (target.open) {
 		location.hash = target.id;
 	} else {
