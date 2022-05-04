@@ -3,15 +3,14 @@
 /* u1-target-event */
 let oldTarget = null;
 function checkTarget(e){
-	const target = (location.hash && document.querySelector(location.hash)) || document;
+	//const target = (location.hash && document.querySelector(location.hash)) || document;
+	const target = (location.hash && document.querySelector(location.hash)) || false;
 	if (target === oldTarget) return;
-	if (target !== document) {
-		const event = new CustomEvent('u1-target', {
-			bubbles:true,
-			detail: {oldTarget}
-		});
-		target.dispatchEvent(event);
-	}
+	const event = new CustomEvent('u1-target', {
+		bubbles:true,
+		detail: {oldTarget,target}
+	});
+	(target||document).dispatchEvent(event);
 	oldTarget = target;
 }
 addEventListener('hashchange',checkTarget);
@@ -20,8 +19,9 @@ addEventListener('DOMContentLoaded',e=>setTimeout(checkTarget));
 
 /* dialog element */
 document.addEventListener('u1-target', e => {
-	const oldTarget = e.detail.oldTarget;
-	const target = e.target;
+	//const oldTarget = e.detail.oldTarget;
+	//const target = e.target;
+	const {oldTarget,target} = e.detail;
 
 	if (oldTarget && oldTarget.matches && oldTarget.matches('dialog[u1-navigatable]')) {
 		if (!target.contains(oldTarget)) oldTarget.close();
@@ -43,14 +43,13 @@ addEventListener('close',e=>{
 
 /* details */
 document.addEventListener('u1-target', e => {
-	const oldTarget = e.detail.oldTarget;
-	const target = e.target;
+	const {oldTarget,target} = e.detail;
 
 	console.log(target, oldTarget);
-	if (oldTarget && oldTarget.matches && oldTarget.matches('details[u1-navigatable]')) {
+	if (oldTarget && oldTarget.matches('details[u1-navigatable]')) {
 		if (!target.contains(oldTarget)) oldTarget.open = false;
 	}
-	if (target.matches('details[u1-navigatable]')) {
+	if (target && target.matches('details[u1-navigatable]')) {
 		e.target.open = true;
 	}
 });
