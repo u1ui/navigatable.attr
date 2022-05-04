@@ -52,15 +52,13 @@ function checkTargets(){
 
 	actives = newest;
 
-}
-
-addEventListener('popstate', triggerLocationChange);
-function triggerLocationChange(){
-	checkTargets();
 	observers.forEach(obs=>{
 		obs.fn({added, removed})
 	});
+
 }
+
+addEventListener('popstate', checkTargets);
 function modifySearchParam(id, add){
 	const url = new URL(window.location);
 	const targets = (url.searchParams.get('u1-target')||'').split(' ');
@@ -68,7 +66,7 @@ function modifySearchParam(id, add){
 	else targets.splice(targets.indexOf(id),1);
 	url.searchParams.set('u1-target', targets.join(' '));
 	history.pushState({}, '', url+'');
-	triggerLocationChange();
+	checkTargets();
 }
 
 /* dialog element */
