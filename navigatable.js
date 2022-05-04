@@ -39,10 +39,8 @@ const removed = new Set();
 addEventListener('popstate', triggerLocationChange);
 function triggerLocationChange(){
 	observers.forEach(obs=>{
-
-		//const added =
 		obs.fn({added, removed})
-	})
+	});
 }
 function modifySearchParam(id, add){
 	const url = new URL(window.location);
