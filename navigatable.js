@@ -101,6 +101,7 @@ function checkTargets(){
 
 	const url = new URL(window.location);
 	const search = (url.searchParams.get('u1-target')||'').split(' ');
+	const param = url.searchParams.get('u1-target');
 	if (search) for (const item of search) newest.add(item);
 	////newest.add(search);
 
