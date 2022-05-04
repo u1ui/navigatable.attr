@@ -24,22 +24,24 @@ class TargetObserver {
 	constructor(fn) {
 		this.fn = fn;
 		observers.add(this);
-
 	}
 	disconnect() {
 		observers.delete(this);
 	}
-	trigger(){
-
-	}
 }
+const active = new Set();
 const added = new Set();
 const removed = new Set();
 
 const oldTargets = [];
 function checkTargets(){
 	const url = new URL(window.location);
-	const targets = url.searchParams.get('u1-target')?.split(' ') ?? [];
+	const search = url.searchParams.get('u1-target')?.split(' ');
+	if (search) {
+		for (let id of search) {
+		}
+	}
+
 
 }
 
