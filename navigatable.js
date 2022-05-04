@@ -29,9 +29,10 @@ class TargetObserver {
 		observers.delete(this);
 	}
 }
-const active = new Set();
-const added = new Set();
-const removed = new Set();
+
+let actives = new Set();
+let added = new Set();
+let removed = new Set();
 
 const oldTargets = [];
 function checkTargets(){
@@ -41,8 +42,13 @@ function checkTargets(){
 
 	const url = new URL(window.location);
 	const search = url.searchParams.get('u1-target')?.split(' ');
-	if (search) {
-		newest.add(search);
+	if (search) newest.add(search);
+
+	for (let active of actives) {
+		if (!newest.has(active)) removed.add(active);
+	}
+	for (let neu of newest) {
+		if (!actives.has(neu)) added.add(item);
 	}
 
 
