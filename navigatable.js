@@ -64,7 +64,6 @@ addEventListener('toggle',e=>{
 		const url = new URL(window.location);
 		const targets = url.searchParams.get('u1-target')?.split(' ') ?? [];
 		targets.push(target.id);
-		console.log(targets)
 		url.searchParams.set('u1-target', targets.join(' '));
 		history.pushState({}, '', url+'');
 
@@ -76,7 +75,6 @@ addEventListener('toggle',e=>{
 		const targets = (url.searchParams.get('u1-target')??'').split(' ') ?? [];
 		const index = targets.indexOf(target.id);
 		if (index > -1) targets.splice(index, 1);
-		console.log(targets)
 		url.searchParams.set('u1-target', targets.join(' '));
 		history.pushState({}, '', url+'');
 
