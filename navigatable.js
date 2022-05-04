@@ -21,7 +21,20 @@ addEventListener('popstate', e => {
 	const url = new Url(location.href);
 });
 
-
+function addToSearchParam(){
+	const url = new URL(window.location);
+	const targets = url.searchParams.get('u1-target')?.split(' ') ?? [];
+	targets.push(target.id);
+	url.searchParams.set('u1-target', targets.join(' '));
+	history.pushState({}, '', url+'');
+}
+function removeFromSearchParam(){
+	const url = new URL(window.location);
+	const targets = url.searchParams.get('u1-target')?.split(' ') ?? [];
+	targets.splice(targets.indexOf(target.id),1);
+	url.searchParams.set('u1-target', targets.join(' '));
+	history.pushState({}, '', url+'');
+}
 
 /* dialog element */
 document.addEventListener('u1-target', e => {
