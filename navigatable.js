@@ -16,7 +16,10 @@ function checkTarget(e){
 addEventListener('hashchange',checkTarget);
 addEventListener('DOMContentLoaded',e=>setTimeout(checkTarget)); // bad, better to use a "TargetObserver"
 
-
+window.addEventListener('popstate', () => {
+	const url = new Url(location.href);
+	console.log(url);
+});
 
 
 
@@ -57,7 +60,14 @@ addEventListener('toggle',e=>{
 	if (!target.id) return;
 	if (!target.matches('details[u1-navigatable]')) return;
 	if (target.open) {
-		location.hash = target.id;
+
+		const url = new URL(window.location);
+		url.searchParams.set('u1-target', target.id);
+		history.pushState({}, '', url);
+		console.log(url)
+
+
+//		location.hash = target.id;
 	} else {
 		if (e.target.id === location.hash.substr(1)) {
 			history.back();
