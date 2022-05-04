@@ -16,11 +16,8 @@ function checkTarget(e){
 addEventListener('hashchange',checkTarget);
 addEventListener('DOMContentLoaded',e=>setTimeout(checkTarget)); // bad, better to use a "TargetObserver"
 
-addEventListener('popstate', e => {
-	console.log(e);
-	const url = new Url(location.href);
-});
 
+addEventListener('popstate', triggerLocationChange);
 function modifySearchParam(id, add){
 	const url = new URL(window.location);
 	const targets = url.searchParams.get('u1-target')?.split(' ') ?? [];
@@ -28,6 +25,7 @@ function modifySearchParam(id, add){
 	else targets.splice(targets.indexOf(id),1);
 	url.searchParams.set('u1-target', targets.join(' '));
 	history.pushState({}, '', url+'');
+	triggerLocationChange();
 }
 
 /* dialog element */
