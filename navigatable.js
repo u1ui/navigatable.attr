@@ -56,6 +56,7 @@ addEventListener('toggle',e=>{
 	if (target.open) {
 		location.hash = target.id;
 	} else {
+		console.log(location.hash)
 		location.hash = '';
 		//history.back();
 		//e.preventDefault();
