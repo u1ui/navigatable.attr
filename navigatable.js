@@ -43,7 +43,13 @@ addEventListener('close',e=>{
 
 /* details */
 document.addEventListener('u1-target', e => {
+	const oldTarget = e.detail.oldTarget;
 	const target = e.target;
+
+	console.log(target, oldTarget);
+	if (oldTarget && oldTarget.matches && oldTarget.matches('details[u1-navigatable]')) {
+		if (!target.contains(oldTarget)) oldTarget.open = false;
+	}
 	if (target.matches('details[u1-navigatable]')) {
 		e.target.open = true;
 	}
