@@ -36,6 +36,13 @@ class TargetObserver {
 const added = new Set();
 const removed = new Set();
 
+const oldTargets = [];
+function checkTargets(){
+	const url = new URL(window.location);
+	const targets = url.searchParams.get('u1-target')?.split(' ') ?? [];
+
+}
+
 addEventListener('popstate', triggerLocationChange);
 function triggerLocationChange(){
 	observers.forEach(obs=>{
