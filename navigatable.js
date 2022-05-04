@@ -58,7 +58,10 @@ function checkTargets(){
 
 }
 
+addEventListener('hashchange',checkTarget);
 addEventListener('popstate', checkTargets);
+checkTargets();
+
 function modifySearchParam(id, add){
 	const url = new URL(window.location);
 	const targets = (url.searchParams.get('u1-target')||'').split(' ');
