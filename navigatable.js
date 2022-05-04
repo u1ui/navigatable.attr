@@ -18,6 +18,9 @@ addEventListener('DOMContentLoaded',e=>setTimeout(checkTarget)); // bad, better 
 
 
 
+
+
+
 /* dialog element */
 document.addEventListener('u1-target', e => {
 	const {oldTarget,target} = e.detail;
@@ -72,10 +75,7 @@ addEventListener('toggle',e=>{
 // u1 unified api
 addEventListener('u1-activate', e => {
     if (!e.target.hasAttribute('u1-navigatable')) return;
-	if (!e.target.hasAttribute('id')) {
-		console.warn('element with a u1-navigatable attribute must have an id');
-		return;
-	}
+	if (!e.target.hasAttribute('id')) { console.warn('element with a u1-navigatable attribute must have an id'); return; }
 	//e.preventDefault(); // needed?
 	location.href = '#' + e.target.id;
 });
