@@ -60,8 +60,12 @@ addEventListener('toggle',e=>{
 	if (e.target.id !== location.hash.substr(1)) return;
 	if (!target.matches('details[u1-navigatable]')) return;
 
-	//history.back();
-	//e.preventDefault();
+	if (!target.open) {
+		history.back();
+		e.preventDefault();
+	} else {
+		location.hash = target.id;
+	}
 },true);
 
 
