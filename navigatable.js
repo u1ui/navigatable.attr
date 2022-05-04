@@ -39,6 +39,18 @@ addEventListener('close',e=>{
 },true);
 
 
+addEventListener('toggle',e=>{
+	const target = e.target;
+	if (!target.id) return;
+	if (e.target.id !== location.hash.substr(1)) return;
+	if (!target.matches('details[u1-navigatable]')) return;
+
+	history.back();
+	e.preventDefault();
+},true);
+
+
+
 
 // beta
 // u1 unified api
