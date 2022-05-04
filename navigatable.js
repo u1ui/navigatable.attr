@@ -62,9 +62,9 @@ addEventListener('toggle',e=>{
 	if (target.open) {
 
 		const url = new URL(window.location);
-		const targets = url.searchParams.get('u1-target').split(',');
+		const targets = url.searchParams.get('u1-target').split(' ');
 		targets.push(target.id);
-		url.searchParams.set('u1-target', targets.join(','));
+		url.searchParams.set('u1-target', targets.join(' '));
 		history.pushState({}, '', url+'');
 
 
@@ -72,10 +72,10 @@ addEventListener('toggle',e=>{
 	} else {
 
 		const url = new URL(window.location);
-		const targets = url.searchParams.get('u1-target').split(',');
+		const targets = url.searchParams.get('u1-target').split(' ') ?? [];
 		const index = targets.indexOf(5);
 		if (index > -1) targets.splice(index, 1);
-		url.searchParams.set('u1-target', targets.join(','));
+		url.searchParams.set('u1-target', targets.join(' '));
 		history.pushState({}, '', url+'');
 
 
