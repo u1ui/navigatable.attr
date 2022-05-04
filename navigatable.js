@@ -14,7 +14,7 @@ function checkTarget(e){
 	oldTarget = target;
 }
 addEventListener('hashchange',checkTarget);
-addEventListener('DOMContentLoaded',e=>setTimeout(checkTarget));
+addEventListener('DOMContentLoaded',e=>setTimeout(checkTarget)); // bad, better to use a "targetObserver"
 
 
 
