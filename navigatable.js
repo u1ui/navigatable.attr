@@ -107,23 +107,13 @@ addEventListener('toggle',e=>{
 	if (!target.id) return;
 	if (!target.matches('details[u1-navigatable]')) return;
 	if (target.open) {
-
-		modifySearchParam(target.id, true);
-
-
-//		location.hash = target.id;
+		location.hash = target.id;
 	} else {
-
-		modifySearchParam(target.id, false);
-
-
-		/*
 		if (e.target.id === location.hash.substr(1)) {
 			history.back();
 			//e.preventDefault();
 			//location.hash = '';
 		}
-		*/
 	}
 },true);
 
