@@ -17,6 +17,7 @@ addEventListener('hashchange',checkTarget);
 addEventListener('DOMContentLoaded',e=>setTimeout(checkTarget));
 
 
+
 /* dialog element */
 document.addEventListener('u1-target', e => {
 	const {oldTarget,target} = e.detail;
