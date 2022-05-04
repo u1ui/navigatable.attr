@@ -17,57 +17,6 @@ addEventListener('hashchange',checkTarget);
 addEventListener('DOMContentLoaded',e=>setTimeout(checkTarget)); // bad, better to use a "TargetObserver"
 
 
-
-/*
-const observers = new Set();
-class TargetObserver {
-	constructor(fn) {
-		this.fn = fn;
-		observers.add(this);
-		fn({added:actives, removed:[]});
-	}
-	disconnect() {
-		observers.delete(this);
-	}
-}
-
-let actives = new Set();
-
-const oldTargets = [];
-function checkTargets(){
-	const newest = new Set();
-
-	newest.add(location.hash.substr(1));
-
-	const url = new URL(window.location);
-	const search = (url.searchParams.get('u1-target')||'').split(' ');
-	if (search) newest.add(search);
-
-	const added = new Set();
-	const removed = new Set();
-	for (let item of actives) if (!newest.has(item))  removed.add(item);
-	for (let item of newest)  if (!actives.has(item)) added.add(item);
-	observers.forEach(obs=>{
-		obs.fn({added, removed})
-	});
-	actives = newest;
-}
-
-addEventListener('hashchange',checkTarget);
-addEventListener('popstate', checkTargets);
-checkTargets();
-
-function modifySearchParam(id, add){
-	const url = new URL(window.location);
-	const targets = (url.searchParams.get('u1-target')||'').split(' ');
-	if (add) targets.push(id);
-	else targets.splice(targets.indexOf(id),1);
-	url.searchParams.set('u1-target', targets.join(' '));
-	history.pushState({}, '', url+'');
-	checkTargets();
-}
-*/
-
 /* dialog element */
 document.addEventListener('u1-target', e => {
 	const {oldTarget,target} = e.detail;
@@ -124,3 +73,58 @@ addEventListener('u1-activate', e => {
 	//e.preventDefault(); // needed?
 	location.href = '#' + e.target.id;
 });
+
+
+
+
+
+
+/*
+const observers = new Set();
+class TargetObserver {
+	constructor(fn) {
+		this.fn = fn;
+		observers.add(this);
+		fn({added:actives, removed:[]});
+	}
+	disconnect() {
+		observers.delete(this);
+	}
+}
+
+let actives = new Set();
+
+const oldTargets = [];
+function checkTargets(){
+	const newest = new Set();
+
+	newest.add(location.hash.substr(1));
+
+	const url = new URL(window.location);
+	const search = (url.searchParams.get('u1-target')||'').split(' ');
+	if (search) newest.add(search);
+
+	const added = new Set();
+	const removed = new Set();
+	for (let item of actives) if (!newest.has(item))  removed.add(item);
+	for (let item of newest)  if (!actives.has(item)) added.add(item);
+	observers.forEach(obs=>{
+		obs.fn({added, removed})
+	});
+	actives = newest;
+}
+
+addEventListener('hashchange',checkTarget);
+addEventListener('popstate', checkTargets);
+checkTargets();
+
+function modifySearchParam(id, add){
+	const url = new URL(window.location);
+	const targets = (url.searchParams.get('u1-target')||'').split(' ');
+	if (add) targets.push(id);
+	else targets.splice(targets.indexOf(id),1);
+	url.searchParams.set('u1-target', targets.join(' '));
+	history.pushState({}, '', url+'');
+	checkTargets();
+}
+*/
