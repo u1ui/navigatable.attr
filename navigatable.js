@@ -41,9 +41,13 @@ addEventListener('close',e=>{
 
 /* details */
 document.addEventListener('u1-target', e => {
-	console.log(e)
+	const target = e.target;
+	if (target.matches && target.matches('details[u1-navigatable]')) {
+		e.target.open = true;
+	}
 });
 addEventListener('toggle',e=>{
+	console.log(e)
 	const target = e.target;
 	if (!target.id) return;
 	if (e.target.id !== location.hash.substr(1)) return;
