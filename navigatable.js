@@ -24,6 +24,7 @@ class TargetObserver {
 	constructor(fn) {
 		this.fn = fn;
 		observers.add(this);
+		fn({added:actives, removed:[]});
 	}
 	disconnect() {
 		observers.delete(this);
