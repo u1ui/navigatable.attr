@@ -18,7 +18,7 @@ addEventListener('DOMContentLoaded',e=>setTimeout(checkTarget)); // bad, better 
 
 
 
-
+/*
 const observers = new Set();
 class TargetObserver {
 	constructor(fn) {
@@ -68,6 +68,7 @@ function modifySearchParam(id, add){
 	history.pushState({}, '', url+'');
 	checkTargets();
 }
+*/
 
 /* dialog element */
 document.addEventListener('u1-target', e => {
