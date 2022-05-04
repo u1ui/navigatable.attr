@@ -16,9 +16,9 @@ function checkTarget(e){
 addEventListener('hashchange',checkTarget);
 addEventListener('DOMContentLoaded',e=>setTimeout(checkTarget)); // bad, better to use a "TargetObserver"
 
-window.addEventListener('popstate', () => {
+window.addEventListener('popstate', e => {
+	console.log(e);
 	const url = new Url(location.href);
-	console.log(url);
 });
 
 
