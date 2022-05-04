@@ -39,6 +39,10 @@ addEventListener('close',e=>{
 },true);
 
 
+/* details */
+document.addEventListener('u1-target', e => {
+	console.log(e)
+});
 addEventListener('toggle',e=>{
 	const target = e.target;
 	if (!target.id) return;
