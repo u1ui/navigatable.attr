@@ -19,14 +19,12 @@ addEventListener('DOMContentLoaded',e=>setTimeout(checkTarget));
 
 /* dialog element */
 document.addEventListener('u1-target', e => {
-	//const oldTarget = e.detail.oldTarget;
-	//const target = e.target;
 	const {oldTarget,target} = e.detail;
 
-	if (oldTarget && oldTarget.matches && oldTarget.matches('dialog[u1-navigatable]')) {
+	if (oldTarget && oldTarget.matches('dialog[u1-navigatable]')) {
 		if (!target.contains(oldTarget)) oldTarget.close();
 	}
-    if (target && target.matches && target.matches('dialog[u1-navigatable]')) {
+    if (target && target.matches('dialog[u1-navigatable]')) {
         !target.open && target.showModal();
     }
 });
