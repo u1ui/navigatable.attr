@@ -42,7 +42,7 @@ function checkTargets(){
 	newest.add(location.hash.substr(1));
 
 	const url = new URL(window.location);
-	const search = url.searchParams.get('u1-target')?.split(' ');
+	const search = (url.searchParams.get('u1-target')||'').split(' ');
 	if (search) newest.add(search);
 
 	added = new Set();
@@ -62,7 +62,7 @@ function triggerLocationChange(){
 }
 function modifySearchParam(id, add){
 	const url = new URL(window.location);
-	const targets = url.searchParams.get('u1-target')?.split(' ') ?? [];
+	const targets = (url.searchParams.get('u1-target')||'').split(' ');
 	if (add) targets.push(id);
 	else targets.splice(targets.indexOf(id),1);
 	url.searchParams.set('u1-target', targets.join(' '));
