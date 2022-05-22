@@ -1,10 +1,10 @@
 # navigatable.attr
-make elements naivgatable (&lt;dialog> for now)
+Make elements naivgatable
 
 # Ussage
 
 ```html
-<script type=module src=https://jsdelivr.net/gh/u1ui/navigatable.attr@x.x.x/navigatable.js></script>
+<script type=module src=https://cdn.jsdelivr.net/gh/u1ui/navigatable.attr@x.x.x/navigatable.min.js></script>
 
 <a href=#test>open dialog</a>
 
@@ -13,6 +13,6 @@ make elements naivgatable (&lt;dialog> for now)
     <button>OK</button>
 </dialog>
 ```
+
 ## Demo
 https://raw.githack.com/u1ui/navigatable.attr/main/tests/test.html  
-
