@@ -14,6 +14,7 @@ Make elements naivgatable
 </dialog>
 ```
 
-## Demo
+## Demos
+https://raw.githack.com/u1ui/navigatable.attr/main/tests/minimal.html  
 https://raw.githack.com/u1ui/navigatable.attr/main/tests/test.html  
 
