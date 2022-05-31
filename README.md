@@ -1,5 +1,5 @@
 # navigatable.attr
-Make elements naivgatable
+Make elements navigatable
 
 # Ussage
 
