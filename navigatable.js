@@ -1,5 +1,6 @@
 // todo security check, is querySelector harmfull for user-input?
 
+
 /* u1-target-event */
 let oldTarget = null;
 function checkTarget(e){
