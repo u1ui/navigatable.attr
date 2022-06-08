@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title></title>
+
+        <link rel=stylesheet href="https://cdn.jsdelivr.net/gh/u1ui/base.css/full.css">
+        <link rel=stylesheet href="https://cdn.jsdelivr.net/gh/u1ui/classless.css/variables.min.css">
+        <link rel=stylesheet href="https://cdn.jsdelivr.net/gh/u1ui/classless.css/classless.min.css">
+        <link rel=stylesheet href="https://cdn.jsdelivr.net/gh/u1ui/classless.css/more.min.css">
+        <link rel=stylesheet href="https://cdn.jsdelivr.net/gh/u1ui/classless.css/simple.min.css">
+
+<body>
+
+<section>
+    <h1>Details</h1>
+
+    <details u1-navigatable id=details1>
+        <summary>summary 1</summary>
+        More rext
+    </details>
+    <details u1-navigatable id=details2>
+        <summary>summary 2</summary>
+        More rext
+    </details>
+
+</section>
+
+<script type=module>
+import {U1TargetObserver, toggleParam} from "../U1TargetObserver.js";
+
+new U1TargetObserver({
+    on:  el => el.open = true,
+    off: el => el.open = false,
+    matches:'details[u1-navigatable]',
+});
+
+addEventListener('toggle',e=>{
+	const el = e.target;
+	if (!el.matches('details[u1-navigatable][id]')) return;
+	if (el.open) {
+        toggleParam(el.id, true);
+	} else {
+        toggleParam(el.id, false);
+	}
+},true);
+
+</script>

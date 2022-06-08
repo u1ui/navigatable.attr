@@ -1,39 +1,61 @@
-
-// ussage:
-// const observer = new TargetObserver(function(data){
-// 	console.log(data.target);
-// 	console.log(data.oldTarget);
-// })
-// observer.disconnect();
-
 const observers = new Set();
 
-class TargetObserver {
-    constructor(callback) {
-        this.callback = callback;
+export class TargetObserver {
+    constructor(opts) {
+        this.opts = opts;
         observers.add(this);
-        this.callback({
-            target: oldTarget,
-        });
+        this.parentTargets = new Set();
+        this._testOn(active);
     }
     disconnect() {
         observers.delete(this);
     }
+    _matches(el){
+        if (!el) return false;
+        return el!==false && this.opts.matches==null || el.matches(this.opts.matches);
+    }
+    _testOn(el){
+        this.opts.on && this._matches(el) && this.opts.on(el);
+        if (this.opts.in && el) {
+            let closest = el.closest(this.opts.matches);
+            while (closest) {
+                this.opts.in(closest);
+                this.parentTargets.add(closest);
+                closest = closest.parentNode.closest(this.opts.matches);
+            }
+        }
+        for (const pTarget of this.parentTargets) {
+            if (el && pTarget.contains(el)) continue;
+            this.opts.out && this.opts.out(pTarget);
+            this.parentTargets.delete(pTarget);
+        }
+    }
+    _testOff(el, newTarget){
+        this.opts.off && this._matches(el) && this.opts.off(el);
+        this.opts.out && this._matches(el) && this.opts.out(el);
+    }
 }
 
-let oldTarget = null;
+let active = null;
 
 function checkTarget(e) {
     const target = (location.hash && document.querySelector(location.hash)) || false;
-    if (target === oldTarget) return;
+    const changed = e ? e.oldURL !== e.newURL : target !== active; // test url vs old url bacause it can have lost a trigger when changed using replaceState
+    if (!changed) return;
     for (const observer of observers) {
-        observer.callback({
-            oldTarget,
-            target,
-            containsOld: target && target.contains(oldTarget),
-        });
+        observer._testOff(active);
+        observer._testOn(target);
     }
-    oldTarget = target;
+    active = target;
 }
 checkTarget();
 addEventListener('hashchange', checkTarget);
+
+
+// ussage:
+// const observer = new TargetObserver({
+//     in: (target) => console.log(target),
+//     out: (target) => console.log(target),
+//     matches: '.element',
+// })
+// observer.disconnect();
