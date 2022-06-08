@@ -16,5 +16,7 @@ Make elements navigatable
 
 ## Demos
 https://raw.githack.com/u1ui/navigatable.attr/main/tests/minimal.html  
+https://raw.githack.com/u1ui/navigatable.attr/main/tests/targetObserver.html  
 https://raw.githack.com/u1ui/navigatable.attr/main/tests/test.html  
+https://raw.githack.com/u1ui/navigatable.attr/main/tests/U1TargetObserver.html  
 
