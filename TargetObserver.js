@@ -1,19 +1,40 @@
 const observers = new Set();
 
 export class TargetObserver {
+
+    /**
+     * @param {Object} opts
+     * @param {Function} opts.in - called when a element or a descendant is the target
+     * @param {Function} opts.out - called when a element and non of its descendants is the target
+     * @param {String} opts.matches - CSS selector for elements we listen to
+     */
     constructor(opts) {
         this.opts = opts;
         observers.add(this);
         this.parentTargets = new Set();
         this._testOn(active);
     }
+
+    /**
+     * @description stops listening
+     */
     disconnect() {
         observers.delete(this);
     }
+
+    /**
+     * @param {Element} el
+     * @private
+     */
     _matches(el){
         if (!el) return false;
         return el!==false && this.opts.matches==null || el.matches(this.opts.matches);
     }
+
+    /**
+     * @param {Element} el
+     * @private
+     */
     _testOn(el){
         this.opts.on && this._matches(el) && this.opts.on(el);
         if (this.opts.in && el) {
@@ -30,6 +51,11 @@ export class TargetObserver {
             this.parentTargets.delete(pTarget);
         }
     }
+
+    /**
+     * @param {Element} el
+     * @private
+     */
     _testOff(el, newTarget){
         this.opts.off && this._matches(el) && this.opts.off(el);
         this.opts.out && this._matches(el) && this.opts.out(el);
