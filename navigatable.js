@@ -4,6 +4,8 @@ import {TargetObserver} from './TargetObserver.js';
 import {U1TargetObserver, toggleParam} from './U1TargetObserver.js';
 
 
+console.error('this is deprecated, usd https://github.com/u1ui/navigable.attr instead');
+
 // translate hash-links to "u1-navigatable"-elements into "u1-target"-params
 new TargetObserver({
 	on: (el) => {
