@@ -1,5 +1,7 @@
 # (deprecated) use navigable.attr
 
+https://github.com/u1ui/navigable.attr
+
 # [u1-navigatable] - attribute
 Make elements navigatable
 
