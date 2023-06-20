@@ -1,3 +1,5 @@
+# (deprecated) use navigable.attr
+
 # [u1-navigatable] - attribute
 Make elements navigatable
 
